@@ -109,7 +109,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: visible; /* 부유 애니메이션을 위해 가시성 확보 */
+            overflow: visible; 
             gap: 0.02em; 
         }
 
@@ -125,7 +125,6 @@
             transition: transform 1.6s cubic-bezier(0.19, 1, 0.22, 1), opacity 1.2s ease;
         }
 
-        /* 진입 후 스스로 움직이는 애니메이션 (Idle Floating) */
         @keyframes floatLetter {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -134,11 +133,9 @@
         .page.active .hero-letter {
             transform: translateY(0);
             opacity: 1;
-            /* 진입 애니메이션이 끝난 후 반복 애니메이션 적용 */
             animation: floatLetter 4s ease-in-out infinite;
         }
 
-        /* 각 글자별 진입 딜레이 및 부유 주기의 차이 부여 */
         .page.active .hero-letter:nth-child(1) { transition-delay: 0.1s; animation-delay: 1.7s; animation-duration: 4.2s; }
         .page.active .hero-letter:nth-child(2) { transition-delay: 0.2s; animation-delay: 1.8s; animation-duration: 3.8s; }
         .page.active .hero-letter:nth-child(3) { transition-delay: 0.3s; animation-delay: 1.9s; animation-duration: 4.5s; }
@@ -165,7 +162,6 @@
             display: block;
         }
 
-        /* Activities Card */
         .activity-card {
             border-top: 1px solid #f0f0f0;
             padding-top: 2.5rem;
@@ -174,7 +170,6 @@
 
         .activity-card:hover { border-top-color: #000; }
 
-        /* Trend Tabs & Cards */
         .trend-tab-btn {
             font-family: 'Inter', sans-serif;
             font-size: 12px;
@@ -263,7 +258,7 @@
         </div>
     </div>
 
-    <!-- Purpose Section (No Changes) -->
+    <!-- Purpose Section -->
     <div id="purpose" class="page page-center">
         <div class="max-w-5xl mx-auto w-full">
             <span class="label sans">Purpose</span>
@@ -276,7 +271,7 @@
         </div>
     </div>
 
-    <!-- Identity Section (No Changes) -->
+    <!-- Identity Section -->
     <div id="identity" class="page page-center">
         <div class="max-w-5xl mx-auto w-full">
             <span class="label sans">Identity</span>
@@ -327,25 +322,35 @@
                         <span class="border border-gray-100 px-2 py-1">Regional Context</span>
                     </div>
                 </div>
-                <!-- Requested Change: Pale Purple Background for Neuro-Life -->
+                <!-- Neuro-Life Card: Updated Content and Background -->
                 <div class="activity-card bg-purple-50 p-8 rounded-lg border-none">
                     <h4 class="text-2xl font-light mb-6 text-purple-900 italic">Neuro-Life Brain Training</h4>
-                    <p class="text-purple-700 font-light leading-relaxed text-sm">**신경가소성** 원리를 삶에 이식하여, 고밀도 EEG 검사 기반의 무의식 사고 패턴 시각화 및 정체성 형성 트레이닝을 연구합니다.</p>
+                    <p class="text-purple-700 font-light leading-relaxed text-sm">
+                        뇌파(EEG) 측정 기술을 활용하여 개인의 인지 특성과 정서적 기저를 객관화합니다. 교육 심리학의 '메타인지(Metacognition)' 이론을 공학적으로 구현하여, 학습과 업무 수행 시 나만의 '최적 각성 지점'을 찾아내는 과학적 자아 분석 솔루션입니다.
+                    </p>
                 </div>
+                <!-- Bodeum-I Project: Updated Content -->
                 <div class="col-span-full bg-black text-white p-12 rounded-xl relative overflow-hidden mt-12">
-                    <div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
                         <div class="max-w-3xl">
-                            <h4 class="text-3xl font-light mb-6 tracking-tight">Bodeum-I Project : 보듬이들</h4>
-                            <p class="text-gray-400 font-light leading-relaxed text-lg">디지털 공간의 비난과 혐오를 필터링하여 상처받은 마음들을 '보듬는' 기술적·인문학적 방벽을 구축하는 행동주의 프로젝트입니다.</p>
+                            <h4 class="text-3xl font-light mb-6 tracking-tight">보듬이들 프로젝트</h4>
+                            <div class="space-y-4 text-gray-400 font-light leading-relaxed">
+                                <p class="text-lg text-white">데이터와 AI를 활용해 사회적 갈등을 치유하고 예방하는 ID-LAB의 사회 공헌 프로젝트입니다.</p>
+                                <ul class="text-sm space-y-2 list-none">
+                                    <li><strong class="text-white">핵심 기능:</strong> 가해자에게는 엄격한 활동 제약을, 피해자에게는 실질적인 회복력을 제공하는 AI 솔루션을 구축합니다.</li>
+                                    <li><strong class="text-white">캐릭터:</strong> 18종의 캐릭터를 통해 사회의 다양한 페르소나를 상징하며, 다름을 인정하는 건강한 문화를 시각화합니다.</li>
+                                    <li><strong class="text-white">목표:</strong> 기업·기관용 인사 교육 시스템 보급 및 전국적인 사회 안전망 인프라 구축을 지향합니다.</li>
+                                </ul>
+                            </div>
                         </div>
-                        <a href="https://punkeyy.github.io/Project_Identity_LAB/#intro" target="_blank" class="px-8 py-4 bg-white text-black text-xs font-bold tracking-widest hover:bg-gray-200 transition-colors inline-block text-center rounded-sm">PROJECT ARCHIVE ↗</a>
+                        <a href="https://punkeyy.github.io/Project_Identity_LAB/#intro" target="_blank" class="px-8 py-4 bg-white text-black text-xs font-bold tracking-widest hover:bg-gray-200 transition-colors inline-block text-center rounded-sm shrink-0">PROJECT ARCHIVE ↗</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Trend Section (No Changes) -->
+    <!-- Trend Section -->
     <div id="trend" class="page">
         <div class="max-w-6xl mx-auto w-full pt-48 pb-32">
             <span class="label sans">Trend Report 2025</span>
@@ -416,14 +421,13 @@
                 targetPage.classList.add('active');
                 targetPage.scrollTop = 0; 
 
-                // Reset and re-trigger Home Animations
                 if (pageId === 'home') {
                     const letters = targetPage.querySelectorAll('.hero-letter');
                     const sub = targetPage.querySelector('.hero-sub');
                     
                     letters.forEach(l => {
                         l.style.transition = 'none';
-                        l.style.animation = 'none'; // Stop floating during entry
+                        l.style.animation = 'none'; 
                         l.style.transform = 'translateY(120%)';
                         l.style.opacity = '0';
                     });
@@ -439,7 +443,6 @@
                                 l.style.transform = 'translateY(0)';
                                 l.style.opacity = '1';
                                 
-                                // Re-enable individual floating animation after entry
                                 setTimeout(() => {
                                     const dur = [4.2, 3.8, 4.5, 4.0, 4.3, 3.9][i];
                                     l.style.animation = `floatLetter ${dur}s ease-in-out infinite`;
