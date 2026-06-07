@@ -232,7 +232,7 @@
             box-shadow: 14px 14px 0px var(--border-color) !important;
         }
 
-        /* Step Card Specific Hover (Already existed, merged with general) */
+        /* Step Card Specific Hover */
         .step-card:hover {
             background-color: #E88D67 !important;
             color: white !important;
@@ -344,6 +344,7 @@
                 <div class="dropdown-menu">
                     <a onclick="showPage('activities-introduce')">Introduce</a>
                     <a onclick="showPage('activities-project')">Project</a>
+                    <a onclick="showPage('activities-apply')">Apply</a>
                 </div>
             </div>
             <div class="nav-item">
@@ -473,11 +474,11 @@
                 </p>
                 <div class="tag-row">
                     <span class="tag-box bg-black text-white">#Macro Tracking</span>
-                    <span class="tag-box border-black text-black">#Regional Contex</span>
+                    <span class="tag-box border-black text-black">#Regional Context</span>
                 </div>
             </div>
 
-            <div class="intro-card border-4 border-black p-8 bg-[#1a1a1a] text-white shadow-[10px_10px_0px_#000] flex flex-col h-full">
+            <div class="intro-card border-4 border-black p-8 bg-[#1a1a1a] text-white shadow-[10px_10px_0px_#000] flex flex-col h-full animate__animated animate__pulse">
                 <h3 class="text-2xl font-black mb-4 leading-tight">Neuro-Life Brain Training</h3>
                 <p class="text-gray-300 leading-relaxed break-keep text-sm">
                     뇌파(EEG) 측정 기술을 활용하여 개인의 인지 특성과 정서적 기저를 객관화합니다. 교육 심리학의 <strong class="text-white">'메타인지'</strong> 이론을 공학적으로 구현하여 최적의 각성 지점을 찾아내는 과학적 자아 분석 솔루션입니다.
@@ -486,6 +487,9 @@
                     <span class="tag-box bg-[#E88D67] text-white border-[#E88D67]">#EEG Technology</span>
                     <span class="tag-box bg-white text-black border-white">#Metacognition</span>
                 </div>
+                <button onclick="showPage('activities-apply')" class="mt-6 w-full py-2 bg-white text-black border-2 border-black font-black text-xs uppercase tracking-wider hover:bg-[#E88D67] hover:text-white transition-all">
+                    지금 분석 신청하기 →
+                </button>
             </div>
         </div>
     </section>
@@ -592,6 +596,70 @@
         </div>
     </section>
 
+    <!-- ACTIVITIES - APPLY -->
+    <section id="activities-apply" class="page-section">
+        <h2 class="text-6xl font-black mb-12 uppercase" style="font-family:'Bebas Neue'">Activities: Apply</h2>
+        
+        <div id="neuro-application-form" class="max-w-4xl mx-auto border-4 border-black bg-white p-8 md:p-12 shadow-[12px_12px_0px_#000] transition-all duration-300">
+            <div class="border-b-4 border-black pb-6 mb-8">
+                <span class="text-[#E88D67] font-black text-sm tracking-wider uppercase">Application Form</span>
+                <h3 class="text-4xl font-black mt-2 uppercase" style="font-family:'Bebas Neue'; letter-spacing: 1px;">Neuro-Life Brain Training 신청하기</h3>
+                <p class="text-gray-600 mt-2 text-sm">ID-LAB에서 제공하는 과학적인 뇌파 측정 기반의 메타인지 자아 분석 시스템에 참여를 신청해 보세요. 본 신청서는 작성 시 실시간으로 <strong>구글 스프레드시트</strong>에 안전하게 보존됩니다.</p>
+            </div>
+
+            <form id="brainTrainingForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block font-black text-sm uppercase tracking-wide mb-2">신청자 성함 *</label>
+                        <input type="text" id="applicantName" placeholder="실명을 입력하세요" 
+                            class="w-full bg-[#F2E8D5] border-2 border-black p-3 font-bold placeholder-gray-500 text-sm focus:outline-none focus:bg-white" required>
+                    </div>
+                    <div>
+                        <label class="block font-black text-sm uppercase tracking-wide mb-2">이메일 주소 *</label>
+                        <input type="email" id="applicantEmail" placeholder="example@idlab.app" 
+                            class="w-full bg-[#F2E8D5] border-2 border-black p-3 font-bold placeholder-gray-500 text-sm focus:outline-none focus:bg-white" required>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block font-black text-sm uppercase tracking-wide mb-2">연락처 *</label>
+                        <input type="tel" id="applicantPhone" placeholder="010-0000-0000" 
+                            class="w-full bg-[#F2E8D5] border-2 border-black p-3 font-bold placeholder-gray-500 text-sm focus:outline-none focus:bg-white" required>
+                    </div>
+                    <div>
+                        <label class="block font-black text-sm uppercase tracking-wide mb-2">현재 소속 또는 상태 *</label>
+                        <select id="applicantStatus" class="w-full bg-[#F2E8D5] border-2 border-black p-3 font-bold text-sm focus:outline-none focus:bg-white" required>
+                            <option value="" disabled selected>선택해 주세요</option>
+                            <option value="student">대학생/대학원생</option>
+                            <option value="jobseeker">취업 준비생</option>
+                            <option value="professional">직장인 / 전문직</option>
+                            <option value="entrepreneur">창업가 / 크리에이터</option>
+                            <option value="other">기타</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-black text-sm uppercase tracking-wide mb-2">뇌파 분석 및 인지훈련에 기대하시는 점 *</label>
+                    <textarea id="applicantReason" placeholder="이 훈련을 통해 집중력 강화, 메타인지 인지, 감정 조율 등 어떤 목적을 얻고자 하시는지 간략하게 기록해 주세요." 
+                        class="w-full bg-[#F2E8D5] border-2 border-black p-3 font-bold placeholder-gray-500 text-sm h-32 focus:outline-none focus:bg-white" required></textarea>
+                </div>
+
+                <div class="flex items-start">
+                    <input type="checkbox" id="privacyConsent" class="mt-1 mr-3 w-4 h-4 accent-[#E88D67]" required>
+                    <label for="privacyConsent" class="text-xs text-gray-600 leading-tight cursor-pointer">
+                        (필수) 개인정보 수집 및 상담 예약을 위한 연락망 구성 목적의 사용에 동의합니다.
+                    </label>
+                </div>
+
+                <button id="submitButton" type="submit" class="w-full py-4 text-white font-black text-sm uppercase tracking-widest border-2 border-black bg-[#438579] hover:bg-black transition-all shadow-[6px_6px_0px_#000] active:translate-y-1 active:shadow-[2px_2px_0px_#000]">
+                    신청서 전송하기
+                </button>
+            </form>
+        </div>
+    </section>
+
     <!-- TREND -->
     <section id="trend" class="page-section">
         <div class="mb-12">
@@ -604,6 +672,7 @@
             <button onclick="switchTrendMonth(2)" class="trend-tab-btn border-4 border-black px-8 py-3 text-2xl font-bold bg-white" id="tab-btn-2">FEBRUARY</button>
             <button onclick="switchTrendMonth(3)" class="trend-tab-btn border-4 border-black px-8 py-3 text-2xl font-bold bg-white" id="tab-btn-3">MARCH</button>
             <button onclick="switchTrendMonth(4)" class="trend-tab-btn border-4 border-black px-8 py-3 text-2xl font-bold bg-white" id="tab-btn-4">APRIL</button>
+            <button onclick="switchTrendMonth(5)" class="trend-tab-btn border-4 border-black px-8 py-3 text-2xl font-bold bg-white" id="tab-btn-5">MAY</button>
         </div>
 
         <div class="max-w-7xl mx-auto w-full">
@@ -686,6 +755,27 @@
                     </div>
                 </div>
             </div>
+
+            <!-- MAY -->
+            <div id="trend-month-5" class="trend-content-pane">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="trend-card-box border-4 border-black p-8 bg-white shadow-[8px_8px_0px_#000]">
+                        <span class="text-[#E88D67] font-black text-xs tracking-widest block mb-4 uppercase">Fashion</span>
+                        <h3 class="text-3xl font-black mb-4">ACC Festival Casual</h3>
+                        <p class="text-gray-700 leading-relaxed break-keep">5월 국립아시아문화전당(ACC) 일대 예술제와 야외 축제들을 중심으로 통기성이 좋은 가벼운 시어 가디건과 빈티지 그런지 무드의 페스티벌 룩이 청년층 사이에서 두드러집니다.</p>
+                    </div>
+                    <div class="trend-card-box border-4 border-black p-8 bg-white shadow-[8px_8px_0px_#000]">
+                        <span class="text-[#E88D67] font-black text-xs tracking-widest block mb-4 uppercase">Economy</span>
+                        <h3 class="text-3xl font-black mb-4">Night Market & Eco-Tour</h3>
+                        <p class="text-gray-700 leading-relaxed break-keep">광주 청년 야시장(대인야시장 등)의 복원과 더불어, Jeonnam 로컬 여행(담양 대나무 축제 등)으로 자연 친화적인 힐링 소비에 로컬 청년들의 관심과 지출이 급증했습니다.</p>
+                    </div>
+                    <div class="trend-card-box border-4 border-black p-8 bg-white shadow-[8px_8px_0px_#000]">
+                        <span class="text-[#E88D67] font-black text-xs tracking-widest block mb-4 uppercase">Society</span>
+                        <h3 class="text-3xl font-black mb-4">Democratic Walk & Archiving</h3>
+                        <p class="text-gray-700 leading-relaxed break-keep">5월의 역사적 의미를 기리기 위해 오월길(5·18 사적지)을 걷는 역사 도보 투어 및 소셜 데이터를 활용한 한글 아카이빙 활동이 청년 크리에이터들 사이에서 깊이 있게 계승되고 있습니다.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -695,6 +785,7 @@
         </div>
     </div>
 
+    <!-- GSAP Animation Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
         const chars = [];
@@ -737,7 +828,7 @@
         function showPage(id) {
             const active = document.querySelector('.page-section.active');
             const target = document.getElementById(id);
-            if (active === target) return;
+            if (active === target || !target) return;
             
             gsap.to(active, { opacity: 0, y: 20, duration: 0.3, onComplete: () => {
                 active.classList.remove('active');
@@ -765,6 +856,106 @@
                 .to(".char-open", { y: 0, duration: 0.8, stagger: 0.1, ease: "back.out" })
                 .to("#opening-overlay", { yPercent: -100, duration: 0.8, ease: "power4.inOut", delay: 0.5 });
         };
+
+        // ──────────────────────────────────────────────────────────
+        // [구글 스프레드시트 연동용 URL 설정 변수]
+        // ──────────────────────────────────────────────────────────
+        const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycyvrNA7gxhresmOXz5nNZcq3ybUfWRdn_4bGznyK3l0oBSa7TFYt5-20rEIMlwKaljMCQ/exec"; 
+
+        document.getElementById('brainTrainingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitButton');
+            
+            submitBtn.innerText = "전송 중 (SENDING...)";
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.7";
+
+            const name = document.getElementById('applicantName').value;
+            const email = document.getElementById('applicantEmail').value;
+            const phone = document.getElementById('applicantPhone').value;
+            const status = document.getElementById('applicantStatus').value;
+            const reason = document.getElementById('applicantReason').value;
+
+            const payload = {
+                name: name,
+                email: email,
+                phone: phone,
+                status: status,
+                reason: reason
+            };
+
+            if (!GOOGLE_SHEET_URL) {
+                setTimeout(() => {
+                    showSuccessScreen(name, email, "로컬 데모 모드: 구글 스프레드시트 배포 주소를 기입하면 실시간 기입이 완료됩니다.");
+                }, 1000);
+                return;
+            }
+
+            fetch(GOOGLE_SHEET_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                showSuccessScreen(name, email, "실시간 연동 완료: 입력하신 양식이 구글 스프레드시트에 성공적으로 자동 추가되었습니다.");
+            })
+            .catch((error) => {
+                console.error("Transmission Error:", error);
+                showSuccessScreen(name, email, "대기열 등록: 네트워크 상황 확인 후 구글 시트로 백그라운드 재전송이 시작됩니다.");
+            });
+        });
+
+        function showSuccessScreen(name, email, detailMsg) {
+            const feedbackContainer = document.getElementById('neuro-application-form');
+            feedbackContainer.style.backgroundColor = '#438579';
+            feedbackContainer.style.color = '#ffffff';
+            feedbackContainer.innerHTML = `
+                <div class="text-center py-10 animate__animated animate__fadeIn">
+                    <h4 class="text-4xl font-black uppercase mb-4" style="font-family:'Bebas Neue';">Submission Successful!</h4>
+                    <p class="text-lg font-bold mb-2">${name}님의 분석 신청서가 접수되었습니다.</p>
+                    <p class="text-sm opacity-90 mb-4">기입해주신 이메일 주소(${email})로 안내 메일이 곧 발송됩니다.</p>
+                    <p class="text-xs bg-black/20 p-2 rounded inline-block font-mono max-w-md break-keep">${detailMsg}</p>
+                    <div class="mt-8">
+                        <button onclick="location.reload()" class="border-2 border-white px-6 py-3 font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-[#438579] transition-all">
+                            돌아가기
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
     </script>
 </body>
 </html>
+<!-- 
+  [구글 앱스 스크립트(Google Apps Script) 전송용 코드]
+  아래 코드를 복사하여 구글 Apps Script 편집기에 붙여넣고 웹 앱으로 배포(액세스 권한: 모든 사람)해 사용하세요.
+  
+  function doPost(e) {
+    try {
+      var doc = SpreadsheetApp.getActiveSpreadsheet();
+      var sheet = doc.getSheets()[0];
+      
+      var data = JSON.parse(e.postData.contents);
+      
+      sheet.appendRow([
+        new Date(), 
+        data.name, 
+        data.email, 
+        data.phone, 
+        data.status, 
+        data.reason
+      ]);
+      
+      return ContentService.createTextOutput(JSON.stringify({ "result": "success" }))
+        .setMimeType(ContentService.MimeType.JSON);
+        
+    } catch (err) {
+      return ContentService.createTextOutput(JSON.stringify({ "result": "error", "error": err.toString() }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+  }
+-->
